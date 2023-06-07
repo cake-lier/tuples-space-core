@@ -30,7 +30,7 @@ ThisBuild / developers := List(
     url = url("https://github.com/cake-lier")
   )
 )
-ThisBuild / description := "A sbt plugin for deploying a scala artifact remotely."
+ThisBuild / description := "A scala library for the implementation of tuples and templates, based on the JSON specification."
 ThisBuild / licenses := List(
   "MIT" -> new URL("https://opensource.org/licenses/MIT")
 )
