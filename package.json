@@ -1,5 +1,5 @@
 {
-  "name": "scala-library-template",
+  "name": "tuples-space-core",
   "version": "0.0.0",
   "description": "",
   "main": "",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cake-lier/scala-library-template.git"
+    "url": "git+https://github.com/cake-lier/tuples-space-core.git"
   },
   "author": "",
   "license": "",
   "bugs": {
-    "url": "https://github.com/cake-lier/scala-library-template/issues"
+    "url": "https://github.com/cake-lier/tuples-space-core/issues"
   },
-  "homepage": "https://github.com/cake-lier/scala-library-template#readme",
+  "homepage": "https://github.com/cake-lier/tuples-space-core#readme",
   "dependencies": {
     "@google/semantic-release-replace-plugin": "1.2.0",
     "@semantic-release/changelog": "6.0.3",
