@@ -22,4 +22,15 @@
 package io.github.cakelier
 package tuples.space
 
+/** A JSON element, an admissible element in the JSON specification.
+ *
+ * This type represents an element in the JSON specification, such as an integer number, a long integer number, a floating point
+ * single precision number, a floating point double precision number, a boolean value, a string value, a null value or a
+ * [[JsonTuple]]. This last type is needed because not only this type is of a JSON element, it is also the type of all elements
+ * that can be contained into a [[JsonTuple]]. In this way, the [[JsonTuple]]s can be nested one inside the other, because an
+ * element in a tuple can be another tuple. Being so, a JSON element can also be a JSON array, because a JSON tuple is just that,
+ * but not a JSON object. Objects are not allowed since this would violate the rigid structure of a tuple: this would allow to
+ * objects to nest tuples inside them, which could nest other objects, which in turn could nest other tuples and so on and so
+ * forth. This would not correctly represent what in most programming languages is a sequence or list of elements.
+ */
 type JsonElement = Int | Long | Double | Float | Boolean | String | JsonTuple | Null
