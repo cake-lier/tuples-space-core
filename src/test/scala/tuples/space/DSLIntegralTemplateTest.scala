@@ -25,8 +25,6 @@ package tuples.space
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers.*
 
-import tuples.space.*
-
 class DSLIntegralTemplateTest extends AnyFunSpec {
 
   describe("An int") {

@@ -27,18 +27,6 @@ import org.scalatest.TryValues.*
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers.*
 
-import tuples.space.JsonTemplate.JsonMultipleTemplate.{JsonAllOfTemplate, JsonAnyOfTemplate, JsonOneOfTemplate}
-import tuples.space.JsonTemplate.{
-  JsonAnyTemplate,
-  JsonBooleanTemplate,
-  JsonNotTemplate,
-  JsonNullTemplate,
-  JsonStringTemplate,
-  JsonTupleTemplate
-}
-import tuples.space.JsonTemplate.JsonNumericTemplate.{JsonDoubleTemplate, JsonFloatTemplate}
-import tuples.space.JsonTemplate.JsonNumericTemplate.JsonIntegralTemplate.{JsonIntTemplate, JsonLongTemplate}
-
 @SuppressWarnings(Array("org.wartremover.warts.Null", "scalafix:DisableSyntax.null"))
 class JsonSerializationTest extends AnyFunSpec {
 

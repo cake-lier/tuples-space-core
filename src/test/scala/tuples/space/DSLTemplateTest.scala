@@ -25,17 +25,6 @@ package tuples.space
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers.*
 
-import tuples.space.JsonTemplate
-import tuples.space.JsonTemplate.JsonMultipleTemplate.{JsonAllOfTemplate, JsonAnyOfTemplate, JsonOneOfTemplate}
-import tuples.space.JsonTemplate.{
-  JsonAnyTemplate,
-  JsonBooleanTemplate,
-  JsonNotTemplate,
-  JsonNullTemplate,
-  JsonStringTemplate,
-  JsonTupleTemplate
-}
-
 class DSLTemplateTest extends AnyFunSpec {
 
   describe("The complete keyword") {
