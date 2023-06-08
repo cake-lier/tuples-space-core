@@ -37,10 +37,8 @@ ThisBuild / homepage := Some(
   url("https://github.com/cake-lier/tuples-space-core")
 )
 ThisBuild / pomIncludeRepository := { _ => false }
-
 ThisBuild / publishMavenStyle := true
 ThisBuild / versionScheme := Some("semver-spec")
-ThisBuild / crossPaths := false
 ThisBuild / publishTo := sonatypePublishToBundle.value
 ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
 
