@@ -22,15 +22,16 @@
 package io.github.cakelier
 package tuples.space
 
-import io.circe.Json
-
 import scala.util.Try
+
+import io.circe.Json
 
 private trait Serializer[A] {
 
   def serialize(e: A): String
 }
 
+@SuppressWarnings(Array("org.wartremover.warts.Null", "scalafix:DisableSyntax.null"))
 private object Serializer {
 
   import io.circe.syntax.EncoderOps
@@ -44,7 +45,6 @@ private object Serializer {
   import io.circe.{Decoder, DecodingFailure, Encoder, HCursor, Json}
   import io.circe.syntax.EncoderOps
 
-  @SuppressWarnings(Array("org.wartremover.warts.Null"))
   given Encoder[JsonElement] = {
     case v: Int => v.asJson
     case v: Long => v.asJson
@@ -56,7 +56,6 @@ private object Serializer {
     case null => Json.Null
   }
 
-  @SuppressWarnings(Array("org.wartremover.warts.Null"))
   given Decoder[JsonElement] = c =>
     if (c.value.isNull)
       Right[DecodingFailure, JsonElement](value = null)

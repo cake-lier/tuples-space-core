@@ -23,7 +23,8 @@ package io.github.cakelier
 package tuples.space
 
 import java.util.Objects
-import io.github.cakelier.AnyOps.*
+
+import AnyOps.*
 
 sealed trait JsonTemplate {
 
@@ -118,7 +119,7 @@ object JsonTemplate {
       JsonTupleTemplateImpl(itemsTemplates, additionalItems)
   }
 
-  @SuppressWarnings(Array("org.wartremover.warts.Null"))
+  @SuppressWarnings(Array("org.wartremover.warts.Null", "scalafix:DisableSyntax.null"))
   case object JsonNullTemplate extends JsonTemplate {
 
     override def matches(value: JsonElement): Boolean = value === null
@@ -320,7 +321,7 @@ object JsonTemplate {
         case _ => false
       }
 
-      @SuppressWarnings(Array("org.wartremover.warts.IsInstanceOf"))
+      @SuppressWarnings(Array("org.wartremover.warts.IsInstanceOf", "scalafix:DisableSyntax.isInstanceOf"))
       override def canEqual(that: Any): Boolean = that.isInstanceOf[JsonStringTemplateImpl]
 
       override def equals(obj: Any): Boolean = obj match {

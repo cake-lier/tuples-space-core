@@ -22,7 +22,8 @@
 package io.github.cakelier
 package tuples.space
 
-import scala.annotation.{tailrec, targetName}
+import scala.annotation.tailrec
+import scala.annotation.targetName
 
 private trait SequentialOps[-T, E, G] {
 

@@ -23,7 +23,7 @@ package io.github.cakelier
 
 import scala.annotation.targetName
 
-@SuppressWarnings(Array("org.wartremover.warts.Equals"))
+@SuppressWarnings(Array("org.wartremover.warts.Equals", "scalafix:DisableSyntax.=="))
 object AnyOps {
 
   extension [A](self: A) {

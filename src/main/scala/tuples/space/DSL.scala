@@ -22,6 +22,8 @@
 package io.github.cakelier
 package tuples.space
 
+import scala.annotation.targetName
+
 import tuples.space.dsl.*
 import tuples.space.dsl.BooleanTemplate.*
 import tuples.space.dsl.StringTemplate.*
@@ -29,8 +31,6 @@ import tuples.space.dsl.numeric.DoubleTemplate.*
 import tuples.space.dsl.numeric.FloatTemplate.*
 import tuples.space.dsl.numeric.IntTemplate.*
 import tuples.space.dsl.numeric.LongTemplate.*
-
-import scala.annotation.targetName
 
 object DSL {
 

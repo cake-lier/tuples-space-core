@@ -22,12 +22,18 @@
 package io.github.cakelier
 package tuples.space
 
+import io.github.cakelier.AnyOps.*
+import org.scalatest.OptionValues.*
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers.*
-import org.scalatest.OptionValues.*
-import io.github.cakelier.AnyOps.*
 
-@SuppressWarnings(Array("org.wartremover.warts.Null", "org.wartremover.warts.ToString", "org.wartremover.warts.Var"))
+@SuppressWarnings(Array(
+  "org.wartremover.warts.Null",
+  "org.wartremover.warts.ToString",
+  "org.wartremover.warts.Var",
+  "scalafix:DisableSyntax.null",
+  "scalafix:DisableSyntax.var"
+))
 class JsonTupleTest extends AnyFunSpec {
   private val tuple0 = JsonTuple()
   private val tuple1 = JsonTuple(0)
