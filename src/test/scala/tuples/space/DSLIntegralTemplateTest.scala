@@ -39,6 +39,19 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
   describe("The int keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json int template") {
+        tuples.space.compile(complete(int)) shouldBe JsonTupleTemplate(
+          Seq(
+            JsonIntTemplate(
+              None,
+              None,
+              None,
+              None,
+              None,
+              None
+            )
+          ),
+          additionalItems = false
+        )
         tuples.space.compile(complete(int lt -3)) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
@@ -640,6 +653,19 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
   describe("The long keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json long template") {
+        tuples.space.compile(complete(long)) shouldBe JsonTupleTemplate(
+          Seq(
+            JsonLongTemplate(
+              None,
+              None,
+              None,
+              None,
+              None,
+              None
+            )
+          ),
+          additionalItems = false
+        )
         tuples.space.compile(complete(long lt -3L)) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(

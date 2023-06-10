@@ -113,9 +113,24 @@ class DSLTemplateTest extends AnyFunSpec {
     }
   }
 
+  describe("A string") {
+    describe("when compiling a template via the DSL") {
+      it("should create a json string template") {
+        tuples.space.compile(partial("hello")) shouldBe JsonTupleTemplate(
+          Seq(JsonStringTemplate(Some(Set("hello")), None, None, None)),
+          additionalItems = true
+        )
+      }
+    }
+  }
+
   describe("The string keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json string template") {
+        tuples.space.compile(complete(string)) shouldBe JsonTupleTemplate(
+          Seq(JsonStringTemplate(None, None, None, None)),
+          additionalItems = false
+        )
         tuples.space.compile(complete(string in ("hello", "test"))) shouldBe JsonTupleTemplate(
           Seq(JsonStringTemplate(Some(Set("hello", "test")), None, None, None)),
           additionalItems = false
@@ -130,6 +145,10 @@ class DSLTemplateTest extends AnyFunSpec {
         )
         tuples.space.compile(complete(string lte 4)) shouldBe JsonTupleTemplate(
           Seq(JsonStringTemplate(None, None, Some(4), None)),
+          additionalItems = false
+        )
+        tuples.space.compile(complete(string lte 4 gte 3)) shouldBe JsonTupleTemplate(
+          Seq(JsonStringTemplate(None, Some(3), Some(4), None)),
           additionalItems = false
         )
         val regex = "[A-Z]+".r
@@ -153,6 +172,18 @@ class DSLTemplateTest extends AnyFunSpec {
   describe("The float keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json float template") {
+        tuples.space.compile(complete(float)) shouldBe JsonTupleTemplate(
+          Seq(
+            JsonFloatTemplate(
+              None,
+              None,
+              None,
+              None,
+              None
+            )
+          ),
+          additionalItems = false
+        )
         tuples.space.compile(complete(float lt 1.0f)) shouldBe JsonTupleTemplate(
           Seq(
             JsonFloatTemplate(
@@ -313,6 +344,18 @@ class DSLTemplateTest extends AnyFunSpec {
   describe("The double keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json double template") {
+        tuples.space.compile(complete(double)) shouldBe JsonTupleTemplate(
+          Seq(
+            JsonDoubleTemplate(
+              None,
+              None,
+              None,
+              None,
+              None
+            )
+          ),
+          additionalItems = false
+        )
         tuples.space.compile(complete(double lt 0.99)) shouldBe JsonTupleTemplate(
           Seq(
             JsonDoubleTemplate(

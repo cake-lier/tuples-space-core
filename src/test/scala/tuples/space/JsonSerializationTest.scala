@@ -41,7 +41,8 @@ class JsonSerializationTest extends AnyFunSpec {
             4.5f -> "4.5",
             true -> "true",
             "string" -> "\"string\"",
-            (null: JsonElement) -> "null"
+            (null: JsonElement) -> "null",
+            7 #: "LOL" #: false #: JsonNil -> "[7,\"LOL\",false]"
           )
         allElements.foreach(t => t._1.serialize shouldBe t._2)
       }
@@ -57,7 +58,8 @@ class JsonSerializationTest extends AnyFunSpec {
             "4.5" -> 4.5f,
             "true" -> true,
             "\"string\"" -> "string",
-            "null" -> (null: JsonElement)
+            "null" -> (null: JsonElement),
+            "[7,\"LOL\",false]" -> 7 #: "LOL" #: false #: JsonNil
           )
         allElements.foreach(t => t._1.deserializeElement.success.value shouldBe t._2)
       }
@@ -98,6 +100,7 @@ class JsonSerializationTest extends AnyFunSpec {
     describe("when JSON deserialized with a wrongly formatted value") {
       it("should throw an exception") {
         "hello".deserializeTemplate.failure
+        "{\"const\":true,\"type\":\"TypeTemplate\"}".deserializeTemplate.failure
       }
     }
   }

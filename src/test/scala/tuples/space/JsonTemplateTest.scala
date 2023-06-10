@@ -240,6 +240,25 @@ class JsonTemplateTest extends AnyFunSpec {
         JsonStringTemplate(None, None, None, Some("[0-9]+".r)).matches(doubleValue) shouldBe false
       }
     }
+
+    describe("when used in an equals comparison") {
+      it("should return the correct value for equals and hashCode") {
+        val template = JsonStringTemplate(None, None, None, Some("[A-Za-z]+".r))
+        val equalTemplate = JsonStringTemplate(None, None, None, Some("[A-Za-z]+".r))
+        val anotherEqualTemplate = JsonStringTemplate(None, None, None, Some("[A-Za-z]+".r))
+        val nonEqualTemplate = JsonStringTemplate(None, None, None, Some("[0-9]+".r))
+
+        template shouldEqual equalTemplate
+        equalTemplate shouldEqual template
+        template shouldEqual template
+        equalTemplate shouldEqual anotherEqualTemplate
+        template shouldEqual anotherEqualTemplate
+
+        template should not equal nonEqualTemplate
+
+        template.hashCode shouldEqual equalTemplate.hashCode
+      }
+    }
   }
 
   describe("A json null template") {
