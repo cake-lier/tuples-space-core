@@ -27,6 +27,11 @@ import JsonTemplate.JsonStringTemplate
 
 object StringTemplate {
 
+  class ConstantStringTemplate(const: String) extends Template {
+
+    override def toJsonTemplate: JsonTemplate = JsonStringTemplate(Some(Set(const)), None, None, None)
+  }
+
   import scala.util.matching.Regex
 
   class EmptyStringTemplate() extends Template {

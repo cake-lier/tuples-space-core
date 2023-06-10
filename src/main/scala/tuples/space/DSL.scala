@@ -34,7 +34,7 @@ import tuples.space.dsl.numeric.LongTemplate.*
 
 object DSL {
 
-  private type ConstantElement = Int | Long | Float | Double | Boolean
+  private type ConstantElement = Int | Long | Float | Double | Boolean | String
 
   private def convertToTemplate(v: Template | ConstantElement): Template = v match {
     case e: ConstantElement =>
@@ -44,6 +44,7 @@ object DSL {
         case f: Float => ConstantFloatTemplate(f)
         case d: Double => ConstantDoubleTemplate(d)
         case b: Boolean => ConstantBooleanTemplate(b)
+        case s: String => ConstantStringTemplate(s)
       }
     case t: Template => t
   }
