@@ -26,25 +26,50 @@ import scala.util.Try
 
 import io.circe.Json
 
-private trait Serializer[A] {
+/** A type-class representing the operations that need to be supported by an object which can be serialized into a JSON-formatted
+  * string.
+  *
+  * An object which can be serialized into a string using the JSON formatting needs to specify how to do so using a specific
+  * operation, which takes the object as input and returns a JSON-formatted string as output. Whether or not this function returns
+  * valid JSON, or JSON at all, is left to the right implementation of the function for the corresponding type of the object.
+  *
+  * @tparam A
+  *   the type of the object that can be serialized in a JSON-formatted way
+  */
+trait JsonSerializable[-A] {
 
+  /** Serializes an object into a string using the JSON format specification.
+    *
+    * @param e
+    *   the object to serialize
+    * @return
+    *   the serialized version of the object, in JSON format
+    */
   def serialize(e: A): String
 }
 
+/** Companion object to the [[JsonSerializable]] type-class, containing its interface and its implementations. */
 @SuppressWarnings(Array("org.wartremover.warts.Null", "scalafix:DisableSyntax.null"))
-private object Serializer {
+object JsonSerializable {
 
   import io.circe.syntax.EncoderOps
   import io.circe.parser.parse
 
-  extension [A](i: A)(using Serializer[A]) {
+  /** The interface of the [[JsonSerializable]] type-class. */
+  extension [A](i: A)(using JsonSerializable[A]) {
 
-    def serialize: String = implicitly[Serializer[A]].serialize(i)
+    /** Serializes this instance into a string using the JSON format specification.
+      *
+      * @return
+      *   the serialized version of this instance, in JSON format
+      */
+    def serialize: String = implicitly[JsonSerializable[A]].serialize(i)
   }
 
   import io.circe.{Decoder, DecodingFailure, Encoder, HCursor, Json}
   import io.circe.syntax.EncoderOps
 
+  /** The implementation of the [[io.circe.Encoder]] type-class for the [[JsonElement]] type. */
   given Encoder[JsonElement] = {
     case v: Int => v.asJson
     case v: Long => v.asJson
@@ -56,6 +81,7 @@ private object Serializer {
     case null => Json.Null
   }
 
+  /** The implementation of the [[io.circe.Decoder]] type-class for the [[JsonElement]] type. */
   given Decoder[JsonElement] = c =>
     if (c.value.isNull)
       Right[DecodingFailure, JsonElement](value = null)
@@ -68,16 +94,20 @@ private object Serializer {
         .orElse[DecodingFailure, JsonElement](c.as[JsonTuple])
         .orElse[DecodingFailure, JsonElement](c.as[String])
 
-  given Serializer[JsonElement] with {
+        /** The implementation of the [[JsonSerializable]] type-class for the [[JsonElement]] type. */
+  given JsonSerializable[JsonElement] with {
 
-    def serialize(e: JsonElement): String = e.asJson.noSpaces
+    override def serialize(e: JsonElement): String = e.asJson.noSpaces
   }
 
+  /** The implementation of the [[io.circe.Encoder]] type-class for the [[JsonTuple]] type. */
   given Encoder[JsonTuple] = t => t.toSeq.asJson
 
+    /** The implementation of the [[io.circe.Decoder]] type-class for the [[JsonTuple]] type. */
   given Decoder[JsonTuple] = _.as[Seq[JsonElement]].map(JsonTuple.fromSeq)
 
-  given jsonTupleSerializer[T <: JsonTuple]: Serializer[T] with {
+  /** The implementation of the [[JsonSerializable]] type-class for the [[JsonTuple]] type. */
+  given jsonTupleJsonSerializable[T <: JsonTuple]: JsonSerializable[T] with {
 
     override def serialize(t: T): String = (t: JsonTuple).asJson.noSpaces
   }
@@ -248,6 +278,7 @@ private object Serializer {
     "pattern"
   )(JsonStringTemplate.apply)
 
+  /** The implementation of the [[io.circe.Encoder]] type-class for the [[JsonTemplate]] type. */
   given Encoder[JsonTemplate] = {
     case t: JsonBooleanTemplate => t.asJson
     case t: JsonIntTemplate => t.asJson
@@ -264,6 +295,7 @@ private object Serializer {
     case t: JsonNotTemplate => t.asJson
   }
 
+  /** The implementation of the [[io.circe.Decoder]] type-class for the [[JsonTemplate]] type. */
   given Decoder[JsonTemplate] = c =>
     c.get[String]("type").flatMap {
       case "NullTemplate" => c.as[JsonNullTemplate.type]
@@ -288,23 +320,52 @@ private object Serializer {
         )
     }
 
-  given jsonTemplateSerializer[T <: JsonTemplate]: Serializer[T] with {
+    /** The implementation of the [[JsonSerializable]] type-class for the [[JsonTemplate]] type. */
+  given jsonTemplateJsonSerializable[T <: JsonTemplate]: JsonSerializable[T] with {
 
     override def serialize(tt: T): String = (tt: JsonTemplate).asJson.noSpaces
   }
 
+  /** Extension methods for deserializing an object from a JSON-formatted string.
+    *
+    * The deserialization operation is the opposite to the serialization one, starting from a JSON-formatted string and leading to
+    * the original object. A method should check the formatting of the string, checking that is in fact a valid JSON, and then
+    * using the fields in the JSON for recreating the original object. For this reason, the deserialization method can fail and so
+    * a [[scala.util.Try]] should wrap the result.
+    */
   extension (s: String) {
 
+    /** Deserializes this string into a [[scala.util.Success]] containing a [[JsonElement]], if the string is in a valid JSON
+      * format and the semantic of the JSON element are followed. A [[scala.util.Failure]] containing a [[Throwable]] explaining
+      * the reason of the failure in deserializing is returned otherwise.
+      *
+      * @return
+      *   a [[JsonElement]] if the deserialization completes with success, a [[Throwable]] otherwise
+      */
     def deserializeElement: Try[JsonElement] = (for {
       j <- parse(s)
       e <- j.as[JsonElement]
     } yield e).toTry
 
+      /** Deserializes this string into a [[scala.util.Success]] containing a [[JsonTuple]], if the string is in a valid JSON
+        * format and the semantic of the JSON tuple are followed. A [[scala.util.Failure]] containing a [[Throwable]] explaining
+        * the reason of the failure in deserializing is returned otherwise.
+        *
+        * @return
+        *   a [[JsonTuple]] if the deserialization completes with success, a [[Throwable]] otherwise
+        */
     def deserializeTuple: Try[JsonTuple] = (for {
       j <- parse(s)
       t <- j.as[JsonTuple]
     } yield t).toTry
 
+      /** Deserializes this string into a [[scala.util.Success]] containing a [[JsonTemplate]], if the string is in a valid JSON
+        * format and the semantic of the JSON template are followed. A [[scala.util.Failure]] containing a [[Throwable]]
+        * explaining the reason of the failure in deserializing is returned otherwise.
+        *
+        * @return
+        *   a [[JsonTemplate]] if the deserialization completes with success, a [[Throwable]] otherwise
+        */
     def deserializeTemplate: Try[JsonTemplate] = (for {
       j <- parse(s)
       tt <- j.as[JsonTemplate]
@@ -312,4 +373,4 @@ private object Serializer {
   }
 }
 
-export Serializer.*
+export JsonSerializable.*
