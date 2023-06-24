@@ -26,12 +26,6 @@ import tuples.space.JsonTemplate.JsonNumericTemplate.JsonFloatTemplate
 
 object FloatTemplate extends NumericTemplate {
 
-  class ConstantFloatTemplate(const: Float)
-    extends ConstantNumericTemplate[Float](
-      const,
-      JsonFloatTemplate(_, None, None, None, None)
-    )
-
   class EmptyFloatTemplate()
     extends EmptyNumericTemplate[
       Float,

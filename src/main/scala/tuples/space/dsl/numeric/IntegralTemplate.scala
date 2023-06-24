@@ -31,11 +31,6 @@ trait IntegralTemplate extends NumericTemplate {
 
   import scala.annotation.targetName
 
-  trait ConstantIntegralTemplate[A: Integral](const: A, converter: Option[A] => JsonIntegralTemplate[A]) extends Template {
-
-    override def toJsonTemplate: JsonTemplate = converter(Some(const))
-  }
-
   trait EmptyIntegralTemplate[
     A: Integral,
     B <: WithMinimumIntegralTemplate[A, D, E, H],

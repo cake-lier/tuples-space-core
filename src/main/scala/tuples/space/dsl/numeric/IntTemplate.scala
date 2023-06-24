@@ -26,12 +26,6 @@ import tuples.space.*
 
 object IntTemplate extends IntegralTemplate {
 
-  class ConstantIntTemplate(const: Int)
-    extends ConstantIntegralTemplate[Int](
-      const,
-      JsonIntTemplate(_, None, None, None, None, None)
-    )
-
   class EmptyIntTemplate()
     extends EmptyIntegralTemplate[
       Int,

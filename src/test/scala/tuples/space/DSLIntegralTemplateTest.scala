@@ -30,7 +30,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
   describe("An int") {
     describe("when compiling a template via the DSL") {
       it("should create a json int template with a constant element") {
-        tuples.space.compile(complete(42)) shouldBe
+        complete(42) shouldBe
         JsonTupleTemplate(Seq(JsonIntTemplate(Some(42), None, None, None, None, None)), additionalItems = false)
       }
     }
@@ -39,7 +39,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
   describe("The int keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json int template") {
-        tuples.space.compile(complete(int)) shouldBe JsonTupleTemplate(
+        complete(int) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -52,7 +52,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lt -3)) shouldBe JsonTupleTemplate(
+        complete(int lt -3) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -65,7 +65,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gte -2)) shouldBe JsonTupleTemplate(
+        complete(int gte -2) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -78,7 +78,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gt 51)) shouldBe JsonTupleTemplate(
+        complete(int gt 51) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -91,7 +91,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lte 24)) shouldBe JsonTupleTemplate(
+        complete(int lte 24) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -104,7 +104,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9)) shouldBe JsonTupleTemplate(
+        complete(int div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -117,7 +117,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lt -3 div 9)) shouldBe JsonTupleTemplate(
+        complete(int lt -3 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -130,7 +130,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 lt -3)) shouldBe JsonTupleTemplate(
+        complete(int div 9 lt -3) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -143,7 +143,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 gte -2)) shouldBe JsonTupleTemplate(
+        complete(int div 9 gte -2) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -156,7 +156,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gte -2 div 9)) shouldBe JsonTupleTemplate(
+        complete(int gte -2 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -169,7 +169,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 gt 51)) shouldBe JsonTupleTemplate(
+        complete(int div 9 gt 51) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -182,7 +182,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gt 51 div 9)) shouldBe JsonTupleTemplate(
+        complete(int gt 51 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -195,7 +195,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 lte 24)) shouldBe JsonTupleTemplate(
+        complete(int div 9 lte 24) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -208,7 +208,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lte 24 div 9)) shouldBe JsonTupleTemplate(
+        complete(int lte 24 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -221,7 +221,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lt -3 gte -2)) shouldBe JsonTupleTemplate(
+        complete(int lt -3 gte -2) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -234,7 +234,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gte -2 lt -3)) shouldBe JsonTupleTemplate(
+        complete(int gte -2 lt -3) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -247,7 +247,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lte 24 gt 51)) shouldBe JsonTupleTemplate(
+        complete(int lte 24 gt 51) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -260,7 +260,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gt 51 lte 24)) shouldBe JsonTupleTemplate(
+        complete(int gt 51 lte 24) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -273,7 +273,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lt -3 gt -2)) shouldBe JsonTupleTemplate(
+        complete(int lt -3 gt -2) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -286,7 +286,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gt -2 lt -3)) shouldBe JsonTupleTemplate(
+        complete(int gt -2 lt -3) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -299,7 +299,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lte 24 gte 51)) shouldBe JsonTupleTemplate(
+        complete(int lte 24 gte 51) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -312,7 +312,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gte 51 lte 24)) shouldBe JsonTupleTemplate(
+        complete(int gte 51 lte 24) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -325,7 +325,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lt -3 gte -2 div 9)) shouldBe JsonTupleTemplate(
+        complete(int lt -3 gte -2 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -338,7 +338,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gte -2 lt -3 div 9)) shouldBe JsonTupleTemplate(
+        complete(int gte -2 lt -3 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -351,7 +351,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lte 24 gt 51 div 9)) shouldBe JsonTupleTemplate(
+        complete(int lte 24 gt 51 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -364,7 +364,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gt 51 lte 24 div 9)) shouldBe JsonTupleTemplate(
+        complete(int gt 51 lte 24 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -377,7 +377,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lt -3 gt -2 div 9)) shouldBe JsonTupleTemplate(
+        complete(int lt -3 gt -2 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -390,7 +390,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gt -2 lt -3 div 9)) shouldBe JsonTupleTemplate(
+        complete(int gt -2 lt -3 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -403,7 +403,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lte 24 gte 51 div 9)) shouldBe JsonTupleTemplate(
+        complete(int lte 24 gte 51 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -416,7 +416,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gte 51 lte 24 div 9)) shouldBe JsonTupleTemplate(
+        complete(int gte 51 lte 24 div 9) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -429,7 +429,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lt -3 div 9 gte -2)) shouldBe JsonTupleTemplate(
+        complete(int lt -3 div 9 gte -2) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -442,7 +442,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gte -2 div 9 lt -3)) shouldBe JsonTupleTemplate(
+        complete(int gte -2 div 9 lt -3) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -455,7 +455,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lte 24 div 9 gt 51)) shouldBe JsonTupleTemplate(
+        complete(int lte 24 div 9 gt 51) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -468,7 +468,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gt 51 div 9 lte 24)) shouldBe JsonTupleTemplate(
+        complete(int gt 51 div 9 lte 24) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -481,7 +481,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lt -3 div 9 gt -2)) shouldBe JsonTupleTemplate(
+        complete(int lt -3 div 9 gt -2) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -494,7 +494,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gt -2 div 9 lt -3)) shouldBe JsonTupleTemplate(
+        complete(int gt -2 div 9 lt -3) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -507,7 +507,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int lte 24 div 9 gte 51)) shouldBe JsonTupleTemplate(
+        complete(int lte 24 div 9 gte 51) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -520,7 +520,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int gte 51 div 9 lte 24)) shouldBe JsonTupleTemplate(
+        complete(int gte 51 div 9 lte 24) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -533,7 +533,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 lt -3 gte -2)) shouldBe JsonTupleTemplate(
+        complete(int div 9 lt -3 gte -2) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -546,7 +546,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 gte -2 lt -3)) shouldBe JsonTupleTemplate(
+        complete(int div 9 gte -2 lt -3) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -559,7 +559,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 lte 24 gt 51)) shouldBe JsonTupleTemplate(
+        complete(int div 9 lte 24 gt 51) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -572,7 +572,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 gt 51 lte 24)) shouldBe JsonTupleTemplate(
+        complete(int div 9 gt 51 lte 24) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -585,7 +585,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 lt -3 gt -2)) shouldBe JsonTupleTemplate(
+        complete(int div 9 lt -3 gt -2) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -598,7 +598,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 gt -2 lt -3)) shouldBe JsonTupleTemplate(
+        complete(int div 9 gt -2 lt -3) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -611,7 +611,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 lte 24 gte 51)) shouldBe JsonTupleTemplate(
+        complete(int div 9 lte 24 gte 51) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -624,7 +624,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(int div 9 gte 51 lte 24)) shouldBe JsonTupleTemplate(
+        complete(int div 9 gte 51 lte 24) shouldBe JsonTupleTemplate(
           Seq(
             JsonIntTemplate(
               None,
@@ -644,7 +644,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
   describe("A long") {
     describe("when compiling a template via the DSL") {
       it("should create a json long template with a constant element") {
-        tuples.space.compile(complete(42L)) shouldBe
+        complete(42L) shouldBe
         JsonTupleTemplate(Seq(JsonLongTemplate(Some(42L), None, None, None, None, None)), additionalItems = false)
       }
     }
@@ -653,7 +653,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
   describe("The long keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json long template") {
-        tuples.space.compile(complete(long)) shouldBe JsonTupleTemplate(
+        complete(long) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -666,7 +666,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lt -3L)) shouldBe JsonTupleTemplate(
+        complete(long lt -3L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -679,7 +679,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gte -2L)) shouldBe JsonTupleTemplate(
+        complete(long gte -2L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -692,7 +692,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gt 51L)) shouldBe JsonTupleTemplate(
+        complete(long gt 51L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -705,7 +705,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lte 24L)) shouldBe JsonTupleTemplate(
+        complete(long lte 24L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -718,7 +718,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -731,7 +731,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lt -3L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long lt -3L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -744,7 +744,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L lt -3L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L lt -3L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -757,7 +757,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L gte -2L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L gte -2L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -770,7 +770,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gte -2L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long gte -2L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -783,7 +783,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L gt 51L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L gt 51L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -796,7 +796,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gt 51L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long gt 51L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -809,7 +809,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L lte 24L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L lte 24L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -822,7 +822,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lte 24L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long lte 24L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -835,7 +835,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lt -3L gte -2L)) shouldBe JsonTupleTemplate(
+        complete(long lt -3L gte -2L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -848,7 +848,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gte -2L lt -3L)) shouldBe JsonTupleTemplate(
+        complete(long gte -2L lt -3L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -861,7 +861,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lte 24L gt 51L)) shouldBe JsonTupleTemplate(
+        complete(long lte 24L gt 51L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -874,7 +874,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gt 51L lte 24L)) shouldBe JsonTupleTemplate(
+        complete(long gt 51L lte 24L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -887,7 +887,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lt -3L gt -2L)) shouldBe JsonTupleTemplate(
+        complete(long lt -3L gt -2L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -900,7 +900,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gt -2L lt -3L)) shouldBe JsonTupleTemplate(
+        complete(long gt -2L lt -3L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -913,7 +913,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lte 24L gte 51L)) shouldBe JsonTupleTemplate(
+        complete(long lte 24L gte 51L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -926,7 +926,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gte 51L lte 24L)) shouldBe JsonTupleTemplate(
+        complete(long gte 51L lte 24L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -939,7 +939,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lt -3L gte -2L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long lt -3L gte -2L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -952,7 +952,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gte -2L lt -3L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long gte -2L lt -3L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -965,7 +965,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lte 24L gt 51L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long lte 24L gt 51L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -978,7 +978,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gt 51L lte 24L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long gt 51L lte 24L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -991,7 +991,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lt -3L gt -2L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long lt -3L gt -2L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1004,7 +1004,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gt -2L lt -3L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long gt -2L lt -3L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1017,7 +1017,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lte 24L gte 51L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long lte 24L gte 51L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1030,7 +1030,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gte 51L lte 24L div 9L)) shouldBe JsonTupleTemplate(
+        complete(long gte 51L lte 24L div 9L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1043,7 +1043,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lt -3L div 9L gte -2L)) shouldBe JsonTupleTemplate(
+        complete(long lt -3L div 9L gte -2L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1056,7 +1056,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gte -2L div 9L lt -3L)) shouldBe JsonTupleTemplate(
+        complete(long gte -2L div 9L lt -3L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1069,7 +1069,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lte 24L div 9L gt 51L)) shouldBe JsonTupleTemplate(
+        complete(long lte 24L div 9L gt 51L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1082,7 +1082,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gt 51L div 9L lte 24L)) shouldBe JsonTupleTemplate(
+        complete(long gt 51L div 9L lte 24L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1095,7 +1095,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lt -3L div 9L gt -2L)) shouldBe JsonTupleTemplate(
+        complete(long lt -3L div 9L gt -2L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1108,7 +1108,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gt -2L div 9L lt -3L)) shouldBe JsonTupleTemplate(
+        complete(long gt -2L div 9L lt -3L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1121,7 +1121,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long lte 24L div 9L gte 51L)) shouldBe JsonTupleTemplate(
+        complete(long lte 24L div 9L gte 51L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1134,7 +1134,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long gte 51L div 9L lte 24L)) shouldBe JsonTupleTemplate(
+        complete(long gte 51L div 9L lte 24L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1147,7 +1147,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L lt -3L gte -2L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L lt -3L gte -2L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1160,7 +1160,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L gte -2L lt -3L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L gte -2L lt -3L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1173,7 +1173,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L lte 24L gt 51L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L lte 24L gt 51L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1186,7 +1186,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L gt 51L lte 24L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L gt 51L lte 24L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1199,7 +1199,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L lt -3L gt -2L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L lt -3L gt -2L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1212,7 +1212,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L gt -2L lt -3L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L gt -2L lt -3L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1225,7 +1225,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L lte 24L gte 51L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L lte 24L gte 51L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,
@@ -1238,7 +1238,7 @@ class DSLIntegralTemplateTest extends AnyFunSpec {
           ),
           additionalItems = false
         )
-        tuples.space.compile(complete(long div 9L gte 51L lte 24L)) shouldBe JsonTupleTemplate(
+        complete(long div 9L gte 51L lte 24L) shouldBe JsonTupleTemplate(
           Seq(
             JsonLongTemplate(
               None,

@@ -26,12 +26,6 @@ import tuples.space.JsonTemplate.JsonNumericTemplate.JsonDoubleTemplate
 
 object DoubleTemplate extends NumericTemplate {
 
-  class ConstantDoubleTemplate(const: Double)
-    extends ConstantNumericTemplate[Double](
-      const,
-      JsonDoubleTemplate(_, None, None, None, None)
-    )
-
   class EmptyDoubleTemplate()
     extends EmptyNumericTemplate[
       Double,

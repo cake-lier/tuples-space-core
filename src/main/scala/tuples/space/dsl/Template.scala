@@ -24,8 +24,14 @@ package tuples.space.dsl
 
 import tuples.space.JsonTemplate
 
-@FunctionalInterface
+/** A DSL template, representing a basic building block for the specification of a [[JsonTemplate]].
+  *
+  * The DSL template differs from the [[JsonTemplate]] in the fact that it must only retain all information needed to convert it
+  * to a [[JsonTemplate]], it is to be used as a skeleton to build specifications and not for actual matching. Being so, it must
+  * provide all it is needed to convert it to a [[JsonTemplate]].
+  */
 trait Template {
 
+  /** Converts this template to its corresponding [[JsonTemplate]]. */
   def toJsonTemplate: JsonTemplate
 }

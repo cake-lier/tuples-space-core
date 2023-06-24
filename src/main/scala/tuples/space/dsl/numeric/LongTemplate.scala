@@ -26,12 +26,6 @@ import tuples.space.JsonTemplate.JsonNumericTemplate.JsonIntegralTemplate.JsonLo
 
 object LongTemplate extends IntegralTemplate {
 
-  class ConstantLongTemplate(const: Long)
-    extends ConstantIntegralTemplate[Long](
-      const,
-      JsonLongTemplate(_, None, None, None, None, None)
-    )
-
   class EmptyLongTemplate()
     extends EmptyIntegralTemplate[
       Long,

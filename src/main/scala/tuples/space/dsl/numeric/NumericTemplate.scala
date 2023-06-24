@@ -28,11 +28,6 @@ import tuples.space.dsl.Template
 
 trait NumericTemplate {
 
-  trait ConstantNumericTemplate[A: Numeric](const: A, converter: Option[A] => JsonNumericTemplate[A]) extends Template {
-
-    override def toJsonTemplate: JsonTemplate = converter(Some(const))
-  }
-
   trait EmptyNumericTemplate[
     A: Numeric,
     B <: WithMinimumNumericTemplate[A, D],
