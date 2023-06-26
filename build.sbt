@@ -6,7 +6,7 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 Global / excludeLintKeys := Set(idePackagePrefix)
 
 ThisBuild / scalafixDependencies ++= Seq(
-  "io.github.ghostbuster91.scalafix-unified" %% "unified" % "0.0.8",
+  "io.github.ghostbuster91.scalafix-unified" %% "unified" % "0.0.9",
   "net.pixiv" %% "scalafix-pixiv-rule" % "4.5.1"
 )
 
