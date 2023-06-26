@@ -22,16 +22,21 @@
 package io.github.cakelier
 package tuples.space.dsl.numeric
 
-import tuples.space.JsonTemplate.JsonNumericTemplate.JsonDoubleTemplate
+import tuples.space.*
 
+/** The object implementing the [[NumericTemplate]] trait for the double type.
+  *
+  * This object represents the specific implementation of the family of traits defined by the [[NumericTemplate]] one. It then
+  * implements them all specifying that the generic numeric type that is specified in all of them is the [[Double]] one.
+  */
 object DoubleTemplate extends NumericTemplate {
 
-  /** The "empty" double template, capable of matching any value of the double type.
-   *
-   * This is the starting template from which creating any other double template by specifying more and more constraints. Being
-   * so, it is allowed to add a minimum value, either inclusive or exclusive, or a maximum value, either inclusive or exclusive,
-   * to create a new template from this.
-   */
+    /** The "empty" double template, capable of matching any value of the double type.
+      *
+      * This is the starting template from which creating any other double template by specifying more and more constraints. Being
+      * so, it is allowed to add a minimum value, either inclusive or exclusive, or a maximum value, either inclusive or
+      * exclusive, to create a new template from this.
+      */
   class EmptyDoubleTemplate
     extends EmptyNumericTemplate[
       Double,
@@ -44,15 +49,16 @@ object DoubleTemplate extends NumericTemplate {
       () => JsonDoubleTemplate(None, None, None, None, None)
     )
 
-  /** The double template for which the minimum value, either inclusive or exclusive, has been specified.
-   *
-   * This template represents one for double values where the minimum constraint, whether it be an inclusive or exclusive one,
-   * has been specified. Now, only a maximum constraint can be specified, closing the now half-open interval. This is not mandatory
-   * to do. This will produce a "complete" template for which no more constraints can be specified.
-   *
-   * @constructor creates a new instance of this class specifying the minimum value, being a [[scala.util.Left]] if it inclusive,
-   *              or a [[scala.util.Right]] if it is exclusive
-   */
+    /** The double template for which the minimum value, either inclusive or exclusive, has been specified.
+      *
+      * This template represents one for double values where the minimum constraint, whether it be an inclusive or exclusive one,
+      * has been specified. Now, only a maximum constraint can be specified, closing the now half-open interval. This is not
+      * mandatory to do. This will produce a "complete" template for which no more constraints can be specified.
+      *
+      * @constructor
+      *   creates a new instance of this class specifying the minimum value, being a [[scala.util.Left]] if it inclusive, or a
+      *   [[scala.util.Right]] if it is exclusive
+      */
   class WithMinimumDoubleTemplate(min: Either[Double, Double])
     extends WithMinimumNumericTemplate[Double, CompleteDoubleTemplate](
       min,
@@ -60,15 +66,16 @@ object DoubleTemplate extends NumericTemplate {
       min => JsonDoubleTemplate(None, min.left.toOption, None, min.toOption, None)
     )
 
-  /** The double template for which the maximum value, either inclusive or exclusive, has been specified.
-   *
-   * This template represents one for double values where the maximum constraint, whether it be an inclusive or exclusive one,
-   * has been specified. Now, only a minimum constraint can be specified, closing the now half-open interval. This is not mandatory
-   * to do. This will produce a "complete" template for which no more constraints can be specified.
-   *
-   * @constructor creates a new instance of this class specifying the maximum value, being a [[scala.util.Left]] if it inclusive,
-   *              or a [[scala.util.Right]] if it is exclusive
-   */
+    /** The double template for which the maximum value, either inclusive or exclusive, has been specified.
+      *
+      * This template represents one for double values where the maximum constraint, whether it be an inclusive or exclusive one,
+      * has been specified. Now, only a minimum constraint can be specified, closing the now half-open interval. This is not
+      * mandatory to do. This will produce a "complete" template for which no more constraints can be specified.
+      *
+      * @constructor
+      *   creates a new instance of this class specifying the maximum value, being a [[scala.util.Left]] if it inclusive, or a
+      *   [[scala.util.Right]] if it is exclusive
+      */
   class WithMaximumDoubleTemplate(max: Either[Double, Double])
     extends WithMaximumNumericTemplate[Double, CompleteDoubleTemplate](
       max,
@@ -76,14 +83,15 @@ object DoubleTemplate extends NumericTemplate {
       max => JsonDoubleTemplate(None, None, max.left.toOption, None, max.toOption)
     )
 
-  /** The "terminal" double template, for which no more information can be specified for building a [[JsonDoubleTemplate]].
-   *
-   * This template represents the last stage in building a numeric template, meaning that no more constraints can be specified.
-   * The range for the value has already been specified as a minimum and maximum allowed values, either inclusive or exclusive.
-   *
-   * @constructor creates a new instance of this class specifying the minimum and the maximum values, being [[scala.util.Left]]s
-   *              if they are inclusive, or [[scala.util.Right]]s if they are exclusive
-   */
+    /** The "terminal" double template, for which no more information can be specified for building a [[JsonDoubleTemplate]].
+      *
+      * This template represents the last stage in building a numeric template, meaning that no more constraints can be specified.
+      * The range for the value has already been specified as a minimum and maximum allowed values, either inclusive or exclusive.
+      *
+      * @constructor
+      *   creates a new instance of this class specifying the minimum and the maximum values, being [[scala.util.Left]]s if they
+      *   are inclusive, or [[scala.util.Right]]s if they are exclusive
+      */
   class CompleteDoubleTemplate(min: Either[Double, Double], max: Either[Double, Double])
     extends CompleteNumericTemplate[Double](
       min,
