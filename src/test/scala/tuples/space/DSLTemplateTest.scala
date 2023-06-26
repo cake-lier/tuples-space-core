@@ -46,7 +46,10 @@ class DSLTemplateTest extends AnyFunSpec {
   describe("The anyOf keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json anyOf template") {
-        complete(anyOf(*, nil)) shouldBe JsonTupleTemplate(Seq(JsonAnyOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))), additionalItems = false)
+        complete(anyOf(*, nil)) shouldBe JsonTupleTemplate(
+          Seq(JsonAnyOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))),
+          additionalItems = false
+        )
       }
     }
   }
@@ -54,7 +57,10 @@ class DSLTemplateTest extends AnyFunSpec {
   describe("The allOf keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json allOf template") {
-        complete(tuples.space.allOf(*, nil)) shouldBe JsonTupleTemplate(Seq(JsonAllOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))), additionalItems = false)
+        complete(tuples.space.allOf(*, nil)) shouldBe JsonTupleTemplate(
+          Seq(JsonAllOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))),
+          additionalItems = false
+        )
       }
     }
   }
@@ -62,7 +68,10 @@ class DSLTemplateTest extends AnyFunSpec {
   describe("The oneOf keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json oneOf template") {
-        complete(tuples.space.oneOf(*, nil)) shouldBe JsonTupleTemplate(Seq(JsonOneOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))), additionalItems = false)
+        complete(tuples.space.oneOf(*, nil)) shouldBe JsonTupleTemplate(
+          Seq(JsonOneOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))),
+          additionalItems = false
+        )
       }
     }
   }
@@ -70,7 +79,10 @@ class DSLTemplateTest extends AnyFunSpec {
   describe("The not keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json not template") {
-        complete(tuples.space.not(nil)) shouldBe JsonTupleTemplate(Seq(JsonNotTemplate(JsonNullTemplate)), additionalItems = false)
+        complete(tuples.space.not(nil)) shouldBe JsonTupleTemplate(
+          Seq(JsonNotTemplate(JsonNullTemplate)),
+          additionalItems = false
+        )
       }
     }
   }
