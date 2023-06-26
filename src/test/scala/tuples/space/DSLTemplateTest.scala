@@ -46,7 +46,7 @@ class DSLTemplateTest extends AnyFunSpec {
   describe("The anyOf keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json anyOf template") {
-        anyOf(*, nil) shouldBe JsonAnyOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))
+        complete(anyOf(*, nil)) shouldBe JsonTupleTemplate(Seq(JsonAnyOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))), additionalItems = false)
       }
     }
   }
@@ -54,7 +54,7 @@ class DSLTemplateTest extends AnyFunSpec {
   describe("The allOf keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json allOf template") {
-        tuples.space.allOf(*, nil) shouldBe JsonAllOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))
+        complete(tuples.space.allOf(*, nil)) shouldBe JsonTupleTemplate(Seq(JsonAllOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))), additionalItems = false)
       }
     }
   }
@@ -62,7 +62,7 @@ class DSLTemplateTest extends AnyFunSpec {
   describe("The oneOf keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json oneOf template") {
-        oneOf(*, nil) shouldBe JsonOneOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))
+        complete(tuples.space.oneOf(*, nil)) shouldBe JsonTupleTemplate(Seq(JsonOneOfTemplate(Seq(JsonAnyTemplate, JsonNullTemplate))), additionalItems = false)
       }
     }
   }
@@ -70,7 +70,7 @@ class DSLTemplateTest extends AnyFunSpec {
   describe("The not keyword") {
     describe("when compiling a template via the DSL") {
       it("should create a json not template") {
-        tuples.space.not(nil) shouldBe JsonNotTemplate(JsonNullTemplate)
+        complete(tuples.space.not(nil)) shouldBe JsonTupleTemplate(Seq(JsonNotTemplate(JsonNullTemplate)), additionalItems = false)
       }
     }
   }
