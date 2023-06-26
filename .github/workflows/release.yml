@@ -21,6 +21,7 @@ jobs:
   test:
     name: Test
     uses: ./.github/workflows/test.yml
+    secrets: inherit
   release:
     name: Release on GitHub and Maven Central
     runs-on: ubuntu-20.04
