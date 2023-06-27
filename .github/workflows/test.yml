@@ -20,6 +20,7 @@ on:
       SONAR_TOKEN:
         description: "Sonar token"
         required: true
+  workflow_dispatch: 
 
 jobs:
   test:
@@ -30,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Setup scala environment
         uses: olafurpg/setup-scala@v14
         with:
