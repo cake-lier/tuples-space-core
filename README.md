@@ -7,6 +7,9 @@
 [![Issues](https://img.shields.io/github/issues/cake-lier/tuples-space-core)](https://github.com/cake-lier/tuples-space-core/issues)
 [![Pull requests](https://img.shields.io/github/issues-pr/cake-lier/tuples-space-core)](https://github.com/cake-lier/tuples-space-core/pulls)
 [![Codecov](https://codecov.io/gh/cake-lier/tuples-space-core/branch/main/graph/badge.svg?token=UX36N6CU78)](https://codecov.io/gh/cake-lier/tuples-space-core)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=cake-lier_tuples-space-core&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=cake-lier_tuples-space-core)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=cake-lier_tuples-space-core&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=cake-lier_tuples-space-core)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=cake-lier_tuples-space-core&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=cake-lier_tuples-space-core)
 
 ## How to use
 

@@ -20,7 +20,6 @@ on:
       SONAR_TOKEN:
         description: "Sonar token"
         required: true
-  workflow_dispatch: 
 
 jobs:
   test:
