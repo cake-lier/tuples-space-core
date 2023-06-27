@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/cake-lier/tuples-space-core/compare/v1.0.0...v1.0.1) (2023-06-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency conventional-changelog-conventionalcommits to v6.1.0 ([46d91c7](https://github.com/cake-lier/tuples-space-core/commit/46d91c70411eb01df010fba37757a9a7e38dd523))
+* **deps:** update dependency semantic-release to v21.0.5 ([df4c8a3](https://github.com/cake-lier/tuples-space-core/commit/df4c8a3f0e8a7b79155e82b76c7a3ddd3542c988))
+
 # 1.0.0 (2023-06-27)
 
 
