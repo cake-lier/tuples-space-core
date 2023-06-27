@@ -23,6 +23,11 @@ package io.github.cakelier
 
 import scala.annotation.targetName
 
+/** This object exists only to satisfy wartremover checks against type-unsafe equality, which leads plainly wrong scala code to
+ * compile.
+ *
+ * @see <a href="https://www.wartremover.org/doc/warts.html">https://www.wartremover.org/doc/warts.html</a>
+ */
 @SuppressWarnings(Array("org.wartremover.warts.Equals", "scalafix:DisableSyntax.=="))
 object AnyOps {
 
