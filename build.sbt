@@ -62,7 +62,7 @@ lazy val root = project
       circeParser
     ),
     wartremoverErrors ++= Warts.allBut(Wart.ImplicitParameter),
-    version := "1.0.1",
+    version := "1.0.2",
     coverageMinimumStmtTotal := 80,
     coverageMinimumBranchTotal := 80,
     headerLicense := Some(HeaderLicense.MIT(

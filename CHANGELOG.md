@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/cake-lier/tuples-space-core/compare/v1.0.1...v1.0.2) (2023-07-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @google/semantic-release-replace-plugin to v1.2.7 ([f4aae54](https://github.com/cake-lier/tuples-space-core/commit/f4aae549ac1ca8da5a3b0117a32d3327949ca974))
+* **deps:** update dependency semantic-release to v21.0.7 ([89aff63](https://github.com/cake-lier/tuples-space-core/commit/89aff6348dbdf08588ab36af2a8dddff51cbf131))
+
 ## [1.0.1](https://github.com/cake-lier/tuples-space-core/compare/v1.0.0...v1.0.1) (2023-06-27)
 
 
