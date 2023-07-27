@@ -59,7 +59,7 @@ plugins:
           countMatches: true
         - files:
             - README.md
-          from: 'libraryDependencies ++= Seq(\"io.github.cake-lier\" % \"tuples-space-core\" % .*'
+          from: 'libraryDependencies \+\+= Seq\(\"io\.github\.cake-lier\" % \"tuples-space-core\" % .*'
           to: "libraryDependencies ++= Seq(\"io.github.cake-lier\" % \"tuples-space-core\" % \"${nextRelease.version}\")"
           results:
             - file: README.md
