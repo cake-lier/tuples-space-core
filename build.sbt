@@ -42,6 +42,8 @@ ThisBuild / versionScheme := Some("semver-spec")
 ThisBuild / publishTo := sonatypePublishToBundle.value
 ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
 
+ThisBuild / autoAPIMappings := true
+
 lazy val root = project
   .in(file("."))
   .enablePlugins(AutomateHeaderPlugin)
