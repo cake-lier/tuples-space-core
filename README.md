@@ -2,7 +2,8 @@
 
 [![Build status](https://github.com/cake-lier/tuples-space-core/actions/workflows/release.yml/badge.svg)](https://github.com/cake-lier/tuples-space-core/actions/workflows/release.yml)
 [![semantic-release: conventional-commits](https://img.shields.io/badge/semantic--release-conventional_commits-e10098?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
-[![Latest release](https://img.shields.io/github/v/release/cake-lier/tuples-space-core)](https://github.com/cake-lier/tuples-space-core/releases/latest/)
+[![License](https://img.shields.io/github/license/cake-lier/tuples-space-core)](https://github.com/cake-lier/tuples-space-core/blob/main/LICENSE.md)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.cake-lier/tuples-space-core_3?label=maven%20central)](https://central.sonatype.com/artifact/io.github.cake-lier/tuples-space-core_3)
 [![Scaladoc](https://img.shields.io/github/v/release/cake-lier/tuples-space-core?label=scaladoc)](https://cake-lier.github.io/tuples-space-core/io/github/cakelier/tuples/space)
 [![Issues](https://img.shields.io/github/issues/cake-lier/tuples-space-core)](https://github.com/cake-lier/tuples-space-core/issues)
 [![Pull requests](https://img.shields.io/github/issues-pr/cake-lier/tuples-space-core)](https://github.com/cake-lier/tuples-space-core/pulls)
@@ -23,7 +24,7 @@ This library is currently available only for scala 3.
 
 ## What is this?
 
-This library is the core of a bigger project which allows to create tuple spaces in an easy and reliable way. A tuple
+This library is the core of a bigger project which allows to create tuple spaces easily and reliably. A tuple
 space is a mean to exchange pieces of information between parties while at the same time coordinating the actions of the parties that
 need those pieces of information. For example, an entity could suspend its job while waiting for the information to be available,
 not differently from how a future-based computation works. When it is available, it can carry on from where it left off. The idea of
@@ -35,8 +36,8 @@ big pool of messages, waiting to be read from someone or probed or whatever. Dif
 topics, because every receive operation is intended to receive one and only one message.
 
 This repo contains only the core part of this project: the tools for creating tuples and templates. The actual operations are
-discussed in the repo which hosts the client for interacting with the tuple space. Another repo exists which gives an implementation
-to the tuple space server, which the clients can interact with.
+discussed in the repo which hosts the client for interacting with the tuple space, you can find it [here](https://github.com/cake-lier/tuples-space-client). Another repo exists which gives an implementation
+to the tuple space server, which the clients can interact with, and it's [here](https://github.com/cake-lier/tuples-space-server).
 
 ## Okay, but what are tuples and templates, then?
 
@@ -47,7 +48,7 @@ except that it cannot contain, directly nor nested, JSON objects. This is becaus
 ideally simple and "indexed", such as an array, the original idea which the notion of a tuple revolves around. Nevertheless, tuples
 can be nested, as JSON array can, and can also contain integers, long integers, booleans, floats, doubles, nulls and strings. The
 whole library is to keep the implementation as close to the JSON specification as possible, being the standard interchange format
-in use on the web today, which was deemed apt for some middleware where exchange is at its core.
+in use on the web today, which was deemed apt for some middleware where the exchange is at its core.
 
 Being tuples some JSON documents formatted in a particular way, templates are also JSON templates. The most successful, other than
 the only standard, approach to check for conformity of a JSON document, meaning to check if a given JSON document matches or not
@@ -131,10 +132,17 @@ exactly one of the given templates matches and `not`, which matches if and only 
 ```scala
 import io.github.cakelier.tuples.space.*
 
-val template1 = complete(anyOf(int, string), nil) // matches JsonTuple(1, null); does not match JsonTuple(true, null)
-val template2 = complete(allOf(int, long), nil) // matches JsonTuple(1, null); does not match JsonTuple(3.5, null)
-val template3 = complete(oneOf(int, float), nil) // matches JsonTuple(3.5f, null); does not match JsonTuple(1, null)
-val template4 = complete(not(int), nil) // matches JsonTuple(true, null); does not match JsonTuple(1, null)
+val template1 = complete(anyOf(int, string), nil) 
+// matches JsonTuple(1, null); does not match JsonTuple(true, null)
+
+val template2 = complete(allOf(int, long), nil) 
+// matches JsonTuple(1, null); does not match JsonTuple(3.5, null)
+
+val template3 = complete(oneOf(int, float), nil) 
+// matches JsonTuple(3.5f, null); does not match JsonTuple(1, null)
+
+val template4 = complete(not(int), nil) 
+// matches JsonTuple(true, null); does not match JsonTuple(1, null)
 ```
 
 It is also possible to specify a tuple as a template or as part of it. In this case, the exact values given are matched to the
